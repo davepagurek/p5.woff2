@@ -1,14 +1,4 @@
-let Brotli
-
-// This is hacky, we should figure out a way to do this better with a bundler
-const loadedBrotli = (async function() {
-  const brotliScript = await fetch('https://unpkg.com/wawoff2@2.0.1/build/decompress_binding.js').then(res => res.text())
-  const runBrotli = new Function(`
-    ${brotliScript};
-    return Module;
-  `);
-  Brotli = runBrotli();
-}());
+import Decompress from './wawoff2-decompress'
 
 function woff2(p5, fn) {
   const oldParseFontData = fn.parseFontData;
@@ -20,9 +10,8 @@ function woff2(p5, fn) {
     const isWoff2 = typeHeader && typeHeader.startsWith('font/woff2');
     
     if (isWoff2) {
-      await loadedBrotli;
       const compressedData = await (await fetch(path)).arrayBuffer()
-      const decompressedData = Uint8Array.from(Brotli.decompress(compressedData));
+      const decompressedData = Uint8Array.from(Decompress.decompress(compressedData));
       const result = await oldParseFontData.call(this, decompressedData);
       return result;
     } else {
@@ -34,3 +23,5 @@ function woff2(p5, fn) {
 if (typeof p5 !== undefined) {
   p5.registerAddon(woff2);
 }
+
+export default woff2;
