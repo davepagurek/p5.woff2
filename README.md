@@ -5,12 +5,12 @@ An addon to support woff2 fonts in p5.js 2.0
 
 Add a script tag to your sketch:
 ```html
-<script src="https://unpkg.com/p5.woff2@0.0.1/lib/p5.woff2.js"></script>
+<script src="https://unpkg.com/p5.woff2@0.0.2/lib/p5.woff2.js"></script>
 ```
 
 On OpenProcessing, add a custom library with this URL:
 ```
-https://unpkg.com/p5.woff2@0.0.1/lib/p5.woff2.js
+https://unpkg.com/p5.woff2@0.0.2/lib/p5.woff2.js
 ```
 
 ## How it works

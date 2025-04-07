@@ -15,7 +15,7 @@ function woff2(p5, fn) {
       const result = await oldParseFontData.call(this, decompressedData);
       return result;
     } else {
-      return oldParseFontData.call(path);
+      return oldParseFontData.call(this, path);
     }
   }
 }
