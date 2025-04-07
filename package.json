@@ -1,11 +1,11 @@
 {
   "name": "p5.woff2",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "main": "lib/p5.woff2.js",
   "scripts": {
     "build": "rollup --config",
-    "publish": "npm publish --access public"
+    "publish": "npm run build && npm publish --access public"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",
